@@ -1,35 +1,39 @@
 #include <iostream>
 
+template <typename T>
 class tree_t
 {
 private:
 	struct node_t {
 		node_t * left;
 		node_t * right;
-		int value;
+		T value;
 	};
 private:
 	node_t * root_;
 	void destroy(node_t * curr_);
-	bool search(int value, const node_t * curr_, bool & success) const;
-	void inorder(std::ostream & stream, const node_t * curr_, int count) const;
+	bool search(T value, const node_t * curr_, bool & success) const;
+	void inorder(std::ostream & stream, const node_t * curr_, std::size_t count) const;
 public:
 	tree_t();
 	~tree_t();
-	void insert(int value);
-	bool find(int value) const;
+	void insert(T value);
+	bool find(T value) const;
 	void print(std::ostream & stream) const;
 };
 
-tree_t::tree_t() {
+template <typename T>
+tree_t<T>::tree_t() {
 	root_ = nullptr;
 }
 
-tree_t::~tree_t() {
+template <typename T>
+tree_t<T>::~tree_t() {
 	destroy(root_);
 }
 
-void tree_t::destroy(node_t * curr_) {
+template <typename T>
+void tree_t<T>::destroy(node_t * curr_) {
 	if (curr_) {
 		destroy(curr_->right);
 		destroy(curr_->left);
@@ -37,7 +41,8 @@ void tree_t::destroy(node_t * curr_) {
 	}
 }
 
-void tree_t::insert(int value) {
+template <typename T>
+void tree_t<T>::insert(T value) {
 	if (!root_) {
 		root_ = new node_t;
 		root_->value = value;
@@ -77,7 +82,8 @@ void tree_t::insert(int value) {
 	}
 }
 
-bool tree_t::find(int value) const {
+template <typename T>
+bool tree_t<T>::find(T value) const {
 	bool success = false;
 	search(value, root_, success);
 
@@ -90,7 +96,8 @@ bool tree_t::find(int value) const {
 	return success;
 }
 
-bool tree_t::search(int value, const node_t * curr_, bool & success) const {
+template <typename T>
+bool tree_t<T>::search(T value, const node_t * curr_, bool & success) const {
 	if (curr_) {
 		if (curr_->value != value) {
 			search(value, curr_->left, success);
@@ -103,12 +110,14 @@ bool tree_t::search(int value, const node_t * curr_, bool & success) const {
 	return true;
 }
 
-void tree_t::print(std::ostream & stream) const {
-	int count = 1;
+template <typename T>
+void tree_t<T>::print(std::ostream & stream) const {
+	std::size_t count = 1;
 	inorder(stream, root_, count);
 }
 
-void tree_t::inorder(std::ostream & stream, const node_t * curr_, int count) const {
+template <typename T>
+void tree_t<T>::inorder(std::ostream & stream, const node_t * curr_, std::size_t count) const {
 	if (curr_) {
 		if (curr_->right) {
 			count++;
@@ -116,7 +125,7 @@ void tree_t::inorder(std::ostream & stream, const node_t * curr_, int count) con
 		}
 
 		if (!curr_->right) {
-			for (int i = 0; i < count; ++i) {
+			for (std::size_t i = 0; i < count; ++i) {
 				if (i == count - 1) {
 					stream << "----";
 				}
@@ -128,7 +137,7 @@ void tree_t::inorder(std::ostream & stream, const node_t * curr_, int count) con
 		}
 		else {
 			count--;
-			for (int i = 0; i < count; ++i) {
+			for (std::size_t i = 0; i < count; ++i) {
 				if (i == count - 1) {
 					stream << "----";
 				}
