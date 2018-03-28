@@ -22,6 +22,10 @@ public:
 	bool find(T value) const;
 	void print(std::ostream & stream) const;
 	bool read(std::istream & stream);
+	
+	node_t * root() {
+		return *root_;
+	}
 };
 
 template <typename T>
