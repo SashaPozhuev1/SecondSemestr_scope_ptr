@@ -39,7 +39,7 @@ TEST_CASE("insert")
 	REQUIRE( input == ostream.str() );
 }
 
-TEST_CASE("insert")
+TEST_CASE("find")
 {
 	tree_t<int> tree;
 	
