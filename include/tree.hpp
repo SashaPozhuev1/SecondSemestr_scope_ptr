@@ -109,7 +109,7 @@ bool tree_t<T>::search(T value, const node_t * curr_, bool & success) const {
 			success = true;
 		}
 	}
-	return true;
+	return success;
 }
 
 template <typename T>
