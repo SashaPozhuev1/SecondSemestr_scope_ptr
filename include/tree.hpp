@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 
 template <typename T>
 class tree_t
@@ -20,6 +21,7 @@ public:
 	void insert(T value);
 	bool find(T value) const;
 	void print(std::ostream & stream) const;
+	bool read(std::istream & stream);
 };
 
 template <typename T>
@@ -156,4 +158,28 @@ void tree_t<T>::inorder(std::ostream & stream, const node_t * curr_, std::size_t
 		}
 
 	}
+}
+
+template <typename T>
+bool tree_t<T>::read(std::istream & stream) {
+	bool success = true;
+	char symb;
+	if (stream >> symb) {
+		if (symb == '+' || symb == '?') {
+			T value;
+			if (stream >> value && symb == '+') {
+				insert(value);
+			}
+			else if (symb == '?') {
+				find(value);
+			}
+		}
+		else if (symb == '=') {
+			print(std::cout);
+		}
+		else if (symb == 'q') {
+			success = false;
+		}
+	}
+	return success; 
 }
