@@ -24,7 +24,7 @@ public:
 	bool read(std::istream & stream);
 	
 	node_t * root() {
-		return *root_;
+		return root_;
 	}
 };
 
