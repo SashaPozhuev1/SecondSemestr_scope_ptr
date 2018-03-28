@@ -38,3 +38,16 @@ TEST_CASE("insert")
 	tree.print(ostream);
 	REQUIRE( input == ostream.str() );
 }
+
+TEST_CASE("insert")
+{
+	tree_t<int> tree;
+	
+	tree.insert(5);
+	tree.insert(7);
+	tree.insert(4);
+	
+	REQUIRE( tree.find(5) == true );
+	REQUIRE( tree.find(7) == true );
+	REQUIRE( tree.find(0) == true );
+}
