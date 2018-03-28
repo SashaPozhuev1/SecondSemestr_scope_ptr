@@ -49,5 +49,5 @@ TEST_CASE("insert")
 	
 	REQUIRE( tree.find(5) == true );
 	REQUIRE( tree.find(7) == true );
-	REQUIRE( tree.find(0) == true );
+	REQUIRE( tree.find(0) == false );
 }
