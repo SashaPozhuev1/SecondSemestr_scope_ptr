@@ -64,7 +64,7 @@ TEST_CASE("read tree")
 			std::istringstream istream(input);
 			std::ostringstream ostream;
 		
-			success = D.read(istream, ostream);
+			success = tree.read(istream, ostream);
 			REQUIRE( success == true );
 		}
 		else if (i == 1) {
@@ -73,7 +73,7 @@ TEST_CASE("read tree")
 			std::istringstream istream(input);
 			std::ostringstream ostream;
 		
-			success = D.read(istream, ostream);
+			success = tree.read(istream, ostream);
 			REQUIRE( success == true );
 			REQUIRE( output == ostream.str() );
 		}
@@ -83,7 +83,7 @@ TEST_CASE("read tree")
 			std::istringstream istream(input);
 			std::ostringstream ostream;
 		
-			success = D.read(istream, ostream);
+			success = tree.read(istream, ostream);
 			REQUIRE( success == true );
 			REQUIRE( output == ostream.str() );
 		}
@@ -92,7 +92,7 @@ TEST_CASE("read tree")
 			std::istringstream istream(input);
 			std::ostringstream ostream;
 		
-			success = D.read(istream, ostream);
+			success = tree.read(istream, ostream);
 			REQUIRE( success == true );
 		}
 		else if (i == 4) {
@@ -100,7 +100,7 @@ TEST_CASE("read tree")
 			std::istringstream istream(input);
 			std::ostringstream ostream;
 		
-			success = D.read(istream, ostream);
+			success = tree.read(istream, ostream);
 			REQUIRE( success == false );
 		}
 	}
