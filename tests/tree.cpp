@@ -69,7 +69,7 @@ TEST_CASE("read tree")
 		}
 		else if (i == 1) {
 			std::string input{"="};
-			std::string output{"----9.8"};
+			std::string output{"----9.8\n"};
 			std::istringstream istream(input);
 			std::ostringstream ostream;
 		
