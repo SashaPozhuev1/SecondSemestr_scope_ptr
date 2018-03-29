@@ -9,7 +9,7 @@ TEST_CASE("creating tree")
 	REQUIRE( tree.root() == nullptr );
 }
 
-TEST_CASE("insert")
+TEST_CASE("insert and print tree")
 {
 	std::string input{
 		"        ----9\n"
@@ -39,7 +39,7 @@ TEST_CASE("insert")
 	REQUIRE( input == ostream.str() );
 }
 
-TEST_CASE("find")
+TEST_CASE("find tree")
 {
 	tree_t<int> tree;
 	
@@ -50,4 +50,58 @@ TEST_CASE("find")
 	REQUIRE( tree.find(5) == true );
 	REQUIRE( tree.find(7) == true );
 	REQUIRE( tree.find(0) == false );
+}
+
+TEST_CASE("read tree")
+{
+	tree_t<double> tree;
+	
+	bool success = true;
+	for(std::size_t i = 0; i < 5; ++i) {
+		if (i == 0) {
+			std::string input{"+9.8"};
+			
+			std::istringstream istream(input);
+			std::ostringstream ostream;
+		
+			success = D.read(istream, ostream);
+			REQUIRE( success == true );
+		}
+		else if (i == 1) {
+			std::string input{"="};
+			std::string output{"----9.8"};
+			std::istringstream istream(input);
+			std::ostringstream ostream;
+		
+			success = D.read(istream, ostream);
+			REQUIRE( success == true );
+			REQUIRE( output == ostream.str() );
+		}
+		else if (i == 2) {
+			std::string input{"?1"};
+			std::string output{"false"};
+			std::istringstream istream(input);
+			std::ostringstream ostream;
+		
+			success = D.read(istream, ostream);
+			REQUIRE( success == true );
+			REQUIRE( output == ostream.str() );
+		}
+		else if (i == 3) {
+			std::string input{"d"};
+			std::istringstream istream(input);
+			std::ostringstream ostream;
+		
+			success = D.read(istream, ostream);
+			REQUIRE( success == true );
+		}
+		else if (i == 4) {
+			std::string input{"q"};
+			std::istringstream istream(input);
+			std::ostringstream ostream;
+		
+			success = D.read(istream, ostream);
+			REQUIRE( success == false );
+		}
+	}
 }
