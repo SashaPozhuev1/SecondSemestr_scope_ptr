@@ -21,7 +21,7 @@ public:
 	void insert(T value);
 	bool find(T value) const;
 	void print(std::ostream & stream) const;
-	bool read(std::istream & stream);
+	bool read(std::istream & stream, std::ostream & ostream);
 	
 	node_t * root() {
 		return root_;
@@ -165,7 +165,7 @@ void tree_t<T>::inorder(std::ostream & stream, const node_t * curr_, std::size_t
 }
 
 template <typename T>
-bool tree_t<T>::read(std::istream & stream) {
+bool tree_t<T>::read(std::istream & stream, std::ostream & ostream) {
 	bool success = true;
 	char symb;
 	if (stream >> symb) {
@@ -179,7 +179,7 @@ bool tree_t<T>::read(std::istream & stream) {
 			}
 		}
 		else if (symb == '=') {
-			print(std::cout);
+			print(ostream);
 		}
 		else if (symb == 'q') {
 			success = false;
