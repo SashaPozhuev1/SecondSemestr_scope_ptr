@@ -10,7 +10,7 @@ int main()
 		std::string stroka;
 		getline(std::cin, stroka);
 		std::istringstream istream(stroka);
-		success = D.read(istream);
+		success = D.read(istream, std::cout);
 	}
 
 	std::cin.get();
