@@ -22,17 +22,7 @@ TEST_CASE("insert and print tree")
 		"    ----4\n"
 		"        ----3\n"};
 	
-	tree_t<int> tree;
-	
-	tree.insert(5);
-	tree.insert(7);
-	tree.insert(4);
-	tree.insert(6);
-	tree.insert(9);
-	tree.insert(7);
-	tree.insert(8);
-	tree.insert(3);
-	tree.insert(4);
+	tree_t<int> tree { 5, 7, 4, 6, 9, 7, 8, 3, 4 };
 	
 	std::ostringstream ostream;
 	tree.print(ostream);
@@ -50,6 +40,27 @@ TEST_CASE("find tree")
 	REQUIRE( tree.find(5) == true );
 	REQUIRE( tree.find(7) == true );
 	REQUIRE( tree.find(0) == false );
+}
+
+TEST_CASE("remove tree")
+{
+	tree_t<int> tree { 5, 7, 4 };
+	
+	REQUIRE( tree.remove(6) == false );
+	REQUIRE( tree.remove(7) == true );
+	REQUIRE( tree.remove(5) == true );
+	REQUIRE( tree.remove(4) == true );
+	REQUIRE( tree.remove(0) == false );
+}
+
+TEST_CASE("compare tree")
+{
+	tree_t<int> A { 5, 7, 4 };
+	tree_t<int> B { 5, 7, 4 };
+	tree_t<int> C { 5, 7, 4, 4 };
+	
+	REQUIRE( (A == B) == true );
+	REQUIRE( (C == B) == false );
 }
 
 TEST_CASE("read tree")
