@@ -50,7 +50,6 @@ TEST_CASE("remove tree")
 	REQUIRE( tree.remove(7) == true );
 	REQUIRE( tree.remove(5) == true );
 	REQUIRE( tree.remove(4) == true );
-	REQUIRE( tree.remove(0) == false );
 }
 
 TEST_CASE("compare tree")
