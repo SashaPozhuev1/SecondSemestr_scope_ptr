@@ -127,12 +127,12 @@ bool tree_t<T>::find(T value) const {
 	bool success = false;
 	search(value, root_, success);
 
-	if (success) {
+/*	if (success) {
 		std::cout << "true\n";
 	}
 	else {
 		std::cout << "false\n";
-	}
+	}*/
 	return success;
 }
 
@@ -164,7 +164,6 @@ template <typename T>
 auto tree_t<T>::operator==(tree_t const & other) const {
 	bool success = true;
 	compare(success, root_, other.root_);
-	std::cout << success;
 	return success;
 }
 
@@ -191,9 +190,7 @@ bool tree_t<T>::remove(T value) {
 	node_t * newroot_ = root_;
 	node_t * pred_ = root_;
 	remser(value, newroot_, curr_);
-	std::cout << curr_->value;
 	search(curr_, newroot_, pred_);
-	std::cout << pred_->value;
 	if (curr_->value != value) {
 		return false;
 	}
