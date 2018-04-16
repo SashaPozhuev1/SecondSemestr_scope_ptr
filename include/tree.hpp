@@ -51,6 +51,7 @@ public:
 	tree_t();
 	tree_t(std::initializer_list<T> keys);
 	~tree_t();
+	bool isEmpty();
 	void insert(T value);
 	bool find(T value) const;
 	void print(std::ostream & stream) const;
@@ -79,6 +80,14 @@ void tree_t<T>::destroy(node_t * curr_) {
 		destroy(curr_->left);
 		delete curr_;
 	}
+}
+
+template <typename T>
+bool tree_t<T>::isEmpty() {
+	if (root_) {
+		return false;
+	}
+	return true;
 }
 
 template <typename T>
