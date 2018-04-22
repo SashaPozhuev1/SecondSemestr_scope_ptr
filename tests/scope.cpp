@@ -1,7 +1,7 @@
 #include <catch.hpp>
 #include <sstream>
 
-#include "tree.hpp"
+#include "scope.hpp"
 
 TEST_CASE("creating scope_ptr and get ptr")
 {
