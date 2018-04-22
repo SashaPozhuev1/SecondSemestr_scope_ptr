@@ -16,18 +16,21 @@ public:
 		if (ptr_) {
 			return ptr_;
 		}
+		return nullptr;
 	}
 
 	T & operator* () { 
 		if (ptr_) {
 			return *ptr_;
 		}
+		return nullptr;
 	}
 
 	T * get() const {
 		if (ptr_) {
 			return ptr_;
 		}
+		return nullptr;
 	}
 
 	void reset(T * ptr = nullptr);
