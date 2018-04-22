@@ -30,7 +30,7 @@ public:
 		}
 	}
 
-	void reset(T * ptr);
+	void reset(T * ptr = nullptr);
 
 	bool isEmpty();
 
