@@ -13,7 +13,7 @@ TEST_CASE("creating scope_ptr and get ptr")
 
 TEST_CASE("operator *")
 {
-	int * p = new double;
+	double * p = new double;
 	*p = 6.1;
 	scoped_ptr <double> scope ( p );
 	
