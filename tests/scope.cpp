@@ -26,7 +26,7 @@ TEST_CASE("operator ->")
 	*p = 6;
 	scoped_ptr <int> scope ( p );
 	
-	REQUIRE( scope.operator->() == 6 );
+	REQUIRE( scope.operator->() == p );
 }
 
 TEST_CASE("reset")
