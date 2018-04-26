@@ -4,7 +4,7 @@ class scoped_ptr {
 	scoped_ptr(scoped_ptr<T> const & other) = delete;             // Запрет конструктора копирования
 	scoped_ptr & operator=(scoped_ptr<T> const & other) = delete; // Запрет копирующего присваивания 
 public:
-	scoped_ptr(T * ptr): ptr_(ptr){ }
+	explicit scoped_ptr(T * ptr = nullptr): ptr_(ptr){ }
 	
 	~scoped_ptr() {
 		if (ptr_) {
